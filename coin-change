@@ -27,3 +27,5 @@ class Solution {
         
         }
 }
+//Timecomplexity= O(amount*n)
+//SpaceComplexity= O(amount)
