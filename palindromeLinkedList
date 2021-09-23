@@ -1,0 +1,49 @@
+
+/*
+Time complexity : O(n)O(n), where nn is the number of nodes in the Linked List.
+
+In the first part, we're copying a Linked List into an Array List. Iterating down a Linked List in sequential order is O(n)O(n), and each of the nn writes to the ArrayList is O(1)O(1). Therefore, the overall cost is O(n)O(n).
+
+In the second part, we're using the two pointer technique to check whether or not the Array List is a palindrome. Each of the nn values in the Array list is accessed once, and a total of O(n/2)O(n/2) comparisons are done. Therefore, the overall cost is O(n)O(n). The Python trick (reverse and list comparison as a one liner) is also O(n)O(n).
+
+This gives O(2n) = O(n)O(2n)=O(n) because we always drop the constants.
+
+Space complexity : O(n)O(n), where nn is the number of nodes in the Linked List.
+
+We are making an Array List and adding nn values to it.
+
+
+*/
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        List<Integer> vals= new ArrayList<>();
+        ListNode curr= head;
+        while(curr!=null){
+                 vals.add(curr.val);
+                 curr=curr.next;
+        }
+        
+        int front=0;
+        int back= vals.size() -1;
+        while(front<back){
+            if(!vals.get(front).equals(vals.get(back))){
+                return false;
+            }
+            front++;
+            back--;
+        }
+        return true;
+    }
+}
